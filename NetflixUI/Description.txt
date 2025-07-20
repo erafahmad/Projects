@@ -1,3 +1,0 @@
-Hii, this is a UI or Front-End clone of Video Streaming web application namely Netflix.
-
-Here, i have used mainly HTML and CSS.
