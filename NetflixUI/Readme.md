@@ -24,27 +24,27 @@ No dependencies needed! Just pure HTML/CSS magic
 
 
 What I Learned -
-CSS Flexbox & Grid for complex layouts
+* CSS Flexbox & Grid for complex layouts
 
-Responsive design principles with media queries
+* Responsive design principles with media queries
 
-Positioning techniques for navbar and hero sections
+* Positioning techniques for navbar and hero sections
 
-CSS transitions for smooth hover effects
+* CSS transitions for smooth hover effects
 
-Working with SVG icons
+* Working with SVG icons
 
 
 Why This Project?
-This clone demonstrates my ability to:
+* This clone demonstrates my ability to:
 
-Recreate complex UIs from scratch
+* Recreate complex UIs from scratch
 
-Write clean, maintainable CSS
+* Write clean, maintainable CSS
 
-Implement responsive design principles
+* Implement responsive design principles
 
-Pay attention to UI details
+* Pay attention to UI details
 
 🔗 Connect With Me Let’s chat! I’m open to collaborations, feedback, or just a tech discussion.
 
