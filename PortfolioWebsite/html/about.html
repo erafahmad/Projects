@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Eraf's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/Eraf's Portfolio/css/style.css">
+    <style>
+        /* About Page Specific Styles */
+        .about-section {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            margin-top: 3rem;
+        }
+
+        .about-img {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-img img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(138, 43, 226, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .about-img::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(138, 43, 226, 0.15) 0%, transparent 40%);
+            z-index: -1;
+            border-radius: 20px;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .about-content p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-container {
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            margin-bottom: 2rem;
+        }
+
+        .skill-category h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .skill-bars {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-bar {
+            background: rgba(20, 20, 60, 0.6);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-bar:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 1100px) {
+            .about-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .skill-bars {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">Eraf's Portfolio</div>
+            <div class="right">
+                <ul id="menu">
+                    <li><a href="/Eraf's Portfolio/html/home.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="/Eraf's Portfolio/html/about.html" class="active"><i class="fas fa-user"></i> About</a></li>
+                    <li><a href="/Eraf's Portfolio/html/services.html"><i class="fas fa-cog"></i> Services</a></li>
+                    <li><a href="/Eraf's Portfolio/html/projects.html"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                    <li><a href="/Eraf's Portfolio/html/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="section-title">
+                <div class="section-subtitle">Get to Know Me</div>
+                <h2 class="section-main-title">About Me</h2>
+            </div>
+
+            <div class="about-section">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?q=80&w=2070&auto=format&fit=crop"
+                        alt="Eraf">
+                </div>
+
+                <div class="about-content">
+                    <h3>Who am I?</h3>
+                    <p>I'm Eraf, a passionate full-stack developer with over 5 years of experience creating digital
+                        solutions that make an impact. My journey in tech started when I was just 15 years old, and I've
+                        been in love with coding ever since.</p>
+                    <p>I specialize in creating responsive, user-friendly web applications using modern technologies. My
+                        approach combines technical expertise with creative problem-solving to deliver exceptional
+                        results.</p>
+                    <p>When I'm not coding, you can find me contributing to open-source projects, mentoring junior
+                        developers, or exploring the latest tech trends.</p>
+
+                    <div class="skills-container">
+                        <div class="skill-category">
+                            <h4>Technical Skills</h4>
+                            <div class="skill-bars">
+                                <div class="skill-bar">JavaScript</div>
+                                <div class="skill-bar">CSS</div>
+                                <div class="skill-bar">Node.js</div>
+                                <div class="skill-bar">Next.js</div>
+                                <div class="skill-bar">Express.js</div>
+                                <div class="skill-bar">React</div>
+                                <div class="skill-bar">HTML</div>
+                                <div class="skill-bar">MongoDB</div>
+                                <div class="skill-bar">Python</div>
+                                <div class="skill-bar">Git & Github</div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>Soft Skills</h4>
+                            <div class="skill-bars">
+                                <div class="skill-bar">Problem Solving</div>
+                                <div class="skill-bar">Teamwork</div>
+                                <div class="skill-bar">Communication</div>
+                                <div class="skill-bar">Time Management</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>Copyright &copy; 2025 Eraf's Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            menuToggle.innerHTML = menu.classList.contains('active')
+                ? '<i class="fas fa-times"></i>'
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Highlight current page in nav
+        document.querySelectorAll('.right ul li a').forEach(link => {
+            if (link.href === window.location.href) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+</body>
+
+</html>

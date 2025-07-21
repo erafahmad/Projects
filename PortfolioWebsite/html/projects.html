@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Eraf's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/Eraf's Portfolio/css/style.css">
+    <style>
+        /* Projects Page Specific Styles */
+        .projects-section {
+            padding: 5rem 10%;
+        }
+    
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .filter-btn {
+            padding: 0.8rem 1.8rem;
+            background: transparent;
+            color: var(--gray);
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: rgba(20, 20, 60, 0.6);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.3);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .project-category {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(138, 43, 226, 0.2);
+            color: var(--primary);
+            border-radius: 30px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-desc {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tech-item {
+            padding: 0.3rem 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            font-size: 0.8rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .project-links a {
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .project-links a:first-child {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .project-links a:last-child {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .project-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+        }
+        
+        /* Project Modal */
+        .project-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: var(--darker);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 900px;
+            margin: 3rem auto;
+            position: relative;
+            animation: modalOpen 0.5s ease;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 50px rgba(138, 43, 226, 0.5);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+        
+        .close-modal:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+        
+        .modal-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .modal-subtitle {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .modal-subtitle span {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(138, 43, 226, 0.2);
+            color: var(--primary);
+            border-radius: 30px;
+            font-size: 0.9rem;
+        }
+        
+        .modal-desc {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .modal-features {
+            margin: 2rem 0;
+        }
+        
+        .modal-features h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: white;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .modal-features h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+        
+        .modal-features ul {
+            list-style: none;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        
+        .modal-features li {
+            margin-bottom: 0.8rem;
+            color: var(--gray);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        
+        .modal-features li i {
+            color: var(--primary);
+            margin-top: 0.2rem;
+        }
+        
+        .modal-tech {
+            margin: 2rem 0;
+        }
+        
+        .modal-tech h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: white;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .modal-tech h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .tech-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(138, 43, 226, 0.2);
+            border-radius: 30px;
+            color: var(--primary);
+        }
+        
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .modal-features ul {
+                columns: 1;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="left">Eraf's Portfolio</div>
+            <div class="right">
+                <ul id="menu">
+                    <li><a href="/Eraf's Portfolio/html/home.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="/Eraf's Portfolio/html/about.html"><i class="fas fa-user"></i> About</a></li>
+                    <li><a href="/Eraf's Portfolio/html/services.html"><i class="fas fa-cog"></i> Services</a></li>
+                    <li><a href="/Eraf's Portfolio/html/projects.html" class="active"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                    <li><a href="/Eraf's Portfolio/html/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="projects-section">
+            <div class="section-title">
+                <div class="section-subtitle">My Work</div>
+                <h2 class="section-main-title">Recent Projects</h2>
+            </div>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="app">Mobile Apps</button>
+                <button class="filter-btn" data-filter="design">UI/UX Design</button>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card" data-category="web">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Project 1" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">E-Commerce Platform</h3>
+                        <span class="project-category">Web Development</span>
+                        <p class="project-desc">A full-featured e-commerce platform with product listings, cart functionality, and secure checkout.</p>
+                        
+                        <div class="project-tech">
+                            <span class="tech-item">React</span>
+                            <span class="tech-item">Node.js</span>
+                            <span class="tech-item">MongoDB</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="#"><i class="fas fa-eye"></i> View Demo</a>
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card" data-category="app">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop" alt="Project 2" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Fitness Tracker App</h3>
+                        <span class="project-category">Mobile App</span>
+                        <p class="project-desc">A cross-platform mobile application for tracking workouts, nutrition, and fitness progress.</p>
+                        
+                        <div class="project-tech">
+                            <span class="tech-item">React Native</span>
+                            <span class="tech-item">Firebase</span>
+                            <span class="tech-item">Redux</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="#"><i class="fas fa-eye"></i> View Demo</a>
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card" data-category="design">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=2069&auto=format&fit=crop" alt="Project 3" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Banking Dashboard UI</h3>
+                        <span class="project-category">UI/UX Design</span>
+                        <p class="project-desc">A modern banking dashboard interface with data visualization and account management features.</p>
+                        
+                        <div class="project-tech">
+                            <span class="tech-item">Figma</span>
+                            <span class="tech-item">Adobe XD</span>
+                            <span class="tech-item">Illustrator</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="#"><i class="fas fa-eye"></i> View Demo</a>
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card" data-category="web">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1964&auto=format&fit=crop" alt="Project 4" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Task Management System</h3>
+                        <span class="project-category">Web Development</span>
+                        <p class="project-desc">A collaborative task management system with real-time updates and team collaboration features.</p>
+                        
+                        <div class="project-tech">
+                            <span class="tech-item">Vue.js</span>
+                            <span class="tech-item">Express</span>
+                            <span class="tech-item">Socket.io</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="#"><i class="fas fa-eye"></i> View Demo</a>
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-card" data-category="app">
+                    <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?q=80&w=2070&auto=format&fit=crop" alt="Project 5" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Social Media App</h3>
+                        <span class="project-category">Mobile App</span>
+                        <p class="project-desc">A social networking application with posts, comments, likes, and real-time messaging.</p>
+                        
+                        <div class="project-tech">
+                            <span class="tech-item">Flutter</span>
+                            <span class="tech-item">Firebase</span>
+                            <span class="tech-item">Dart</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="#"><i class="fas fa-eye"></i> View Demo</a>
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card" data-category="design">
+                    <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=2070&auto=format&fit=crop" alt="Project 6" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Travel Booking UI Kit</h3>
+                        <span class="project-category">UI/UX Design</span>
+                        <p class="project-desc">A comprehensive UI kit for travel booking applications with 50+ customizable components.</p>
+                        
+                        <div class="project-tech">
+                            <span class="tech-item">Sketch</span>
+                            <span class="tech-item">Adobe XD</span>
+                            <span class="tech-item">Photoshop</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="#"><i class="fas fa-eye"></i> View Demo</a>
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Project Modal -->
+    <div class="project-modal" id="project-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <img src="" alt="Project Image" class="modal-img" id="modal-img">
+            <div class="modal-body">
+                <h3 class="modal-title" id="modal-title">Project Title</h3>
+                <div class="modal-subtitle">
+                    <span id="modal-category">Category</span>
+                    <span id="modal-date">June 2023</span>
+                </div>
+                
+                <p class="modal-desc" id="modal-desc">Project description goes here.</p>
+                
+                <div class="modal-features">
+                    <h4>Key Features</h4>
+                    <ul id="modal-features">
+                        <!-- Features will be added dynamically -->
+                    </ul>
+                </div>
+                
+                <div class="modal-tech">
+                    <h4>Technologies Used</h4>
+                    <div class="tech-tags" id="modal-tech">
+                        <!-- Tech tags will be added dynamically -->
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button class="btn"><i class="fas fa-eye"></i> Live Demo</button>
+                    <button class="btn"><i class="fab fa-github"></i> View Code</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>Copyright &copy; 2025 Eraf's Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            menuToggle.innerHTML = menu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Filter projects
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+        
+        // Project modal functionality
+        const projectModal = document.getElementById('project-modal');
+        const closeModal = document.getElementById('close-modal');
+        const projectLinks = document.querySelectorAll('.project-links a');
+        
+        // Sample project data (in a real app, this would come from a database)
+        const projects = [
+            {
+                id: 1,
+                title: "E-Commerce Platform",
+                category: "Web Development",
+                date: "May 2023",
+                desc: "A full-featured e-commerce platform with product listings, cart functionality, and secure checkout. The platform includes admin dashboard for managing products, orders, and customers.",
+                features: [
+                    "Product catalog with categories and filters",
+                    "Shopping cart and checkout process",
+                    "User authentication and profiles",
+                    "Admin dashboard for management",
+                    "Payment gateway integration",
+                    "Order tracking system"
+                ],
+                tech: ["React", "Node.js", "Express", "MongoDB", "Redux", "Stripe"],
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+            },
+            {
+                id: 2,
+                title: "Fitness Tracker App",
+                category: "Mobile App",
+                date: "March 2023",
+                desc: "A cross-platform mobile application for tracking workouts, nutrition, and fitness progress. The app includes personalized workout plans and progress analytics.",
+                features: [
+                    "Workout tracking with exercise library",
+                    "Nutrition logging with barcode scanner",
+                    "Progress charts and analytics",
+                    "Personalized workout plans",
+                    "Social features to share progress",
+                    "Dark/light mode support"
+                ],
+                tech: ["React Native", "Firebase", "Redux", "Expo", "Chart.js"],
+                image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop"
+            }
+        ];
+        
+        // Open modal with project details
+        projectLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const projectCard = link.closest('.project-card');
+                const projectTitle = projectCard.querySelector('.project-title').textContent;
+                
+                // Find project in our data
+                const project = projects.find(p => p.title === projectTitle);
+                
+                if (project) {
+                    document.getElementById('modal-title').textContent = project.title;
+                    document.getElementById('modal-category').textContent = project.category;
+                    document.getElementById('modal-date').textContent = project.date;
+                    document.getElementById('modal-desc').textContent = project.desc;
+                    document.getElementById('modal-img').src = project.image;
+                    
+                    // Add features
+                    const featuresList = document.getElementById('modal-features');
+                    featuresList.innerHTML = '';
+                    project.features.forEach(feature => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<i class="fas fa-check-circle"></i> ${feature}`;
+                        featuresList.appendChild(li);
+                    });
+                    
+                    // Add technologies
+                    const techTags = document.getElementById('modal-tech');
+                    techTags.innerHTML = '';
+                    project.tech.forEach(tech => {
+                        const tag = document.createElement('span');
+                        tag.className = 'tech-tag';
+                        tag.textContent = tech;
+                        techTags.appendChild(tag);
+                    });
+                    
+                    projectModal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+        
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            projectModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === projectModal) {
+                projectModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eraf's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="/Eraf's Portfolio/css/footer.css" />
+    <link rel="stylesheet" href="/Eraf's Portfolio/css/utility.css" />
+    <link rel="stylesheet" href="/Eraf's Portfolio/css/style.css" />
+    <style>
+        :root {
+            --primary: #8a2be2;
+            --secondary: #6c22bd;
+            --dark: #0a081f;
+            --darker: #070616;
+            --light: #f0f8ff;
+            --gray: #9ca3af;
+            --dark-bg: rgb(0, 0, 33);
+            --nav-bg: rgb(20, 20, 60);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+            background-color: var(--nav-bg);
+            padding: 0 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .left {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), #5d9bff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .right ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .right ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .right ul li a:hover {
+            color: #d0bcff;
+        }
+
+        .right ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .right ul li a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .firstSection {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 90vh;
+            padding: 0 10%;
+            gap: 5rem;
+        }
+
+        .leftSection {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .leftSection h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+        }
+
+        .purple {
+            color: var(--primary);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--gray);
+        }
+
+        .typing-text {
+            font-size: 2.5rem;
+            font-weight: 600;
+            min-height: 3.5rem;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.5);
+        }
+
+        .btn:nth-child(2) {
+            background: transparent;
+            border: 2px solid var(--primary);
+        }
+
+        .rightSection {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(138, 43, 226, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(138, 43, 226, 0.15) 0%, transparent 40%);
+            z-index: -1;
+            border-radius: 20px;
+        }
+
+        /* Divider */
+        .divider {
+            width: 80%;
+            height: 2px;
+            margin: 5rem auto;
+            background: linear-gradient(to right, transparent, var(--primary), transparent);
+            border: none;
+        }
+
+        /* Experience Section */
+        .secondSection {
+            padding: 5rem 10%;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-subtitle {
+            color: var(--primary);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-main-title {
+            font-size: 2.8rem;
+            background: linear-gradient(to right, #fff, var(--gray));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--primary), #5d9bff);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+
+        .timeline-item {
+            padding: 1.5rem 3rem;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: var(--dark-bg);
+            border: 4px solid var(--primary);
+            top: 2rem;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -13px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -13px;
+        }
+
+        .timeline-content {
+            padding: 2rem;
+            background: rgba(20, 20, 60, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.3);
+        }
+
+        .timeline-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .timeline-desc {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 5rem 10%;
+            background: rgba(10, 8, 31, 0.8);
+            position: relative;
+            z-index: 2;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.8rem;
+            background: transparent;
+            color: var(--gray);
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(20, 20, 60, 0.6);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.3);
+            border-color: var(--primary);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(93, 155, 255, 0.1));
+            transition: height 0.4s ease;
+            z-index: -1;
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .service-desc {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            min-height: 80px;
+        }
+
+        .service-btn {
+            padding: 0.6rem 1.5rem;
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--darker);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 700px;
+            padding: 3rem;
+            position: relative;
+            animation: modalOpen 0.5s ease;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 50px rgba(138, 43, 226, 0.5);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .modal-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-right: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .modal-body {
+            margin-bottom: 2rem;
+        }
+
+        .modal-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--gray);
+        }
+
+        .feature-item i {
+            color: var(--primary);
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker);
+            padding: 5rem 10% 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        .footer-column p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(138, 43, 226, 0.1);
+            border-radius: 50%;
+            color: var(--primary);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--gray);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            font-size: 0.8rem;
+            color: var(--primary);
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            align-items: flex-start;
+        }
+
+        .contact-info li i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .contact-info span {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes modalOpen {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1100px) {
+            .firstSection {
+                flex-direction: column;
+                padding: 5rem 5%;
+                text-align: center;
+            }
+            
+            .buttons {
+                justify-content: center;
+            }
+            
+            .rightSection {
+                margin-top: 3rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 18px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .right ul {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 90px);
+                background: var(--nav-bg);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 3rem;
+                transition: all 0.3s ease;
+            }
+            
+            .right ul.active {
+                left: 0;
+            }
+            
+            .leftSection h1 {
+                font-size: 2.5rem;
+            }
+            
+            .typing-text {
+                font-size: 1.8rem;
+            }
+            
+            .modal-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">Eraf's Portfolio</div>
+            <div class="right">
+                <ul id="menu">
+                    <li><a href="/Eraf's Portfolio/html/home.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="/Eraf's Portfolio/html/about.html"><i class="fas fa-user"></i> About</a></li>
+                    <li><a href="/Eraf's Portfolio/html/services.html" id="services-link"><i class="fas fa-cog"></i> Services</a></li>
+                    <li><a href="/Eraf's Portfolio/html/projects.html"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                    <li><a href="/Eraf's Portfolio/html/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="firstSection">
+            <div class="leftSection">
+                <h1>Hi, I'm <span class="purple">Eraf</span></h1>
+                <div class="subtitle">A Passionate</div>
+                <div class="typing-text" id="element"></div>
+                <div class="buttons">
+                    <button class="btn" id="download-resume"><i class="fas fa-download"></i> Download Resume</button>
+                    <a href="https://github.com/erafahmad" target="_blank" class="btn"><i class="fab fa-github"></i> Visit Github</a>
+                </div>
+            </div>
+            
+            <div class="rightSection">
+                <div class="pattern"></div>
+                <img src="https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?q=80&w=2070&auto=format&fit=crop" alt="Developer Illustration" class="hero-img">
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section class="services-section" id="services">
+            <div class="services-container">
+                <div class="section-title">
+                    <div class="section-subtitle">What I Offer</div>
+                    <h2 class="section-main-title">My Services</h2>
+                </div>
+                
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All Services</button>
+                    <button class="filter-btn" data-filter="frontend">Frontend</button>
+                    <button class="filter-btn" data-filter="backend">Backend</button>
+                    <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card" data-service="frontend">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="service-title">Web Development</h3>
+                        <p class="service-desc">Crafting modern, responsive websites with clean code and creative design. Passionate about performance, user experience, and turning ideas into digital reality. Lets build something amazing!</p>
+                        <button class="service-btn">Learn More</button>
+                    </div>
+                    
+                    <div class="service-card" data-service="frontend">
+                        <div class="service-icon">
+                            <i class="fab fa-react"></i>
+                        </div>
+                        <h3 class="service-title">Frontend Development</h3>
+                        <p class="service-desc">Frontend Developer crafting pixel-perfect, responsive UIs with React, JavaScript & CSS. Passionate about performance, accessibility, and creating seamless user experiences.</p>
+                        <button class="service-btn">Learn More</button>
+                    </div>
+                    
+                    <div class="service-card" data-service="backend">
+                        <div class="service-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3 class="service-title">Backend Development</h3>
+                        <p class="service-desc">Backend Developer building robust APIs, scalable systems & efficient databases. Passionate about clean architecture, security, and high-performance server-side solutions.</p>
+                        <button class="service-btn">Learn More</button>
+                    </div>
+                    
+                    <div class="service-card" data-service="backend">
+                        <div class="service-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="service-title">UI/UX Design</h3>
+                        <p class="service-desc">UI/UX Designer crafting intuitive, visually stunning experiences—where user needs meet beautiful interfaces. Passionate about empathy, simplicity, and pixel-perfect details.</p>
+                        <button class="service-btn">Learn More</button>
+                    </div>
+                    
+                    <div class="service-card" data-service="fullstack">
+                        <div class="service-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3 class="service-title">Mobile Apps</h3>
+                        <p class="service-desc">Mobile Apps crafting smooth, intuitive experiences for iOS & Android. Passionate about performance, sleek design, and code that just works.</p>
+                        <button class="service-btn">Learn More</button>
+                    </div>
+                    
+                    <div class="service-card" data-service="fullstack">
+                        <div class="service-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="service-title">AI Solutions</h3>
+                        <p class="service-desc">AI solutions that drive decisions—automating workflows, optimizing processes, and uncovering hidden patterns. Data science with measurable results.</p>
+                        <button class="service-btn">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section class="secondSection">
+            <div class="section-title">
+                <div class="section-subtitle">What I have done so far</div>
+                <h2 class="section-main-title">Learning Experience</h2>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="timeline-title">FrontEnd Developer</h3>
+                        <p class="timeline-desc">Mastered HTML5, CSS3, JavaScript, and modern frameworks. Created responsive and accessible web applications with pixel-perfect designs.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fab fa-react"></i>
+                        </div>
+                        <h3 class="timeline-title">React Developer</h3>
+                        <p class="timeline-desc">Built complex applications using React.js and React Router. Implemented state management solutions and optimized performance.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3 class="timeline-title">BackEnd Developer</h3>
+                        <p class="timeline-desc">Developed RESTful APIs and microservices with Node.js , Next.js and Express.js Implemented database solutions using MongoDB and MySQL.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3 class="timeline-title">Full Stack Developer</h3>
+                        <p class="timeline-desc">Created end-to-end solutions combining frontend and backend technologies. Implemented CI/CD pipelines and cloud deployment strategies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Service Modal -->
+    <div class="modal" id="service-modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <div class="modal-header">
+                <div class="modal-icon" id="modal-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3 class="modal-title" id="modal-title">Web Development</h3>
+            </div>
+            <div class="modal-body">
+                <p id="modal-description">Creating beautiful, responsive websites that work flawlessly across all devices and screen sizes. Using modern CSS frameworks and techniques to ensure optimal user experience on any device.</p>
+                
+                <div class="modal-features">
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Mobile-First Approach</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Cross-Browser Compatibility</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Performance Optimization</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Accessibility Compliance</span>
+                    </div>
+                </div>
+                
+                <p>I create websites that not only look great but also provide an exceptional user experience across all platforms. My approach focuses on clean, semantic code and progressive enhancement to ensure your site reaches the widest possible audience.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn"><i class="fas fa-envelope"></i> Contact Me</button>
+                <button class="btn"><i class="fas fa-project-diagram"></i> View Projects</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- In your existing HTML file, replace the footer section with this: -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-column">
+            <h3>About Me</h3>
+            <p>Passionate full-stack developer with expertise in modern web technologies. Committed to creating efficient, scalable, and user-friendly applications.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/md-eraf-ahmad-57100b326/" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span class="tooltip">LinkedIn</span>
+                </a>
+                <a href="https://github.com/erafahmad" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                    <span class="tooltip">GitHub</span>
+                </a>
+                <a href="https://www.instagram.com/_eraf12_/" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span class="tooltip">Instagram</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="/Eraf's Portfolio/html/home.html"><i class="fas fa-chevron-right"></i> <span>Home</span></a></li>
+                <li><a href="/Eraf's Portfolio/html/about.html"><i class="fas fa-chevron-right"></i> <span>About</span></a></li>
+                <li><a href="/Eraf's Portfolio/html/services.html"><i class="fas fa-chevron-right"></i> <span>Services</span></a></li>
+                <li><a href="/Eraf's Portfolio/html/projects.html"><i class="fas fa-chevron-right"></i> <span>Projects</span></a></li>
+                <li><a href="/Eraf's Portfolio/html/contact.html"><i class="fas fa-chevron-right"></i> <span>Contact</span></a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-column">
+            <h3>Services</h3>
+            <ul class="footer-links">
+                <li><a href="services.html#web-development"><i class="fas fa-code"></i> <span>Web Development</span></a></li>
+                <li><a href="services.html#frontend-development"><i class="fas fa-laptop-code"></i> <span>Frontend Development</span></a></li>
+                <li><a href="services.html#backend-development"><i class="fas fa-laptop-code"></i> <span>Backend Development</span></a></li>
+                <li><a href="services.html#ui-ux-design"><i class="fas fa-paint-brush"></i> <span>UI/UX Design</span></a></li>
+                <li><a href="services.html#mobile-apps"><i class="fas fa-mobile-alt"></i> <span>Mobile Apps</span></a></li>
+                <li><a href="services.html#ai-solutions"><i class="fas fa-robot"></i> <span>AI Solutions</span></a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-column">
+            <h3>Contact Me</h3>
+            <form class="quick-contact-form" id="quickContactForm">
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn">
+                    <i class="fas fa-paper-plane"></i> Send
+                </button>
+            </form>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>PF Hostel, SRMIST, KTR</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+91 6202 827 443</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>erafahmad31@gmail.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>Copyright &copy; <span id="current-year"></span> Eraf's Portfolio. All rights reserved.</p>
+        <div class="back-to-top" id="backToTop">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="footer.js"></script>
+    <script>
+        // Typing animation
+        var typed = new Typed('#element', {
+            strings: ['Web Developer', 'UI/UX Designer', 'Full Stack Developer', 'React Specialist'],
+            typeSpeed: 70,
+            backSpeed: 50,
+            loop: true,
+            showCursor: true,
+            cursorChar: '|',
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            menuToggle.innerHTML = menu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Download Resume functionality
+        document.getElementById('download-resume').addEventListener('click', function() {
+            const link = document.createElement('a');
+
+            // Add the resume path 
+            // Pending
+            link.href = 'path/to/your/resume.pdf';
+            link.download = 'Eraf_Resume.pdf';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            alert('Your download will begin shortly...');
+        });
+
+        // Services Section Interaction
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter buttons
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    const filter = button.getAttribute('data-filter');
+                    
+                    // Filter service cards
+                    serviceCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-service') === filter) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+            
+            // Service card click to open modal
+            const serviceCardsAll = document.querySelectorAll('.service-card');
+            const modal = document.getElementById('service-modal');
+            const closeModal = document.getElementById('close-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const modalIcon = document.getElementById('modal-icon');
+            
+            serviceCardsAll.forEach(card => {
+                card.addEventListener('click', () => {
+                    const title = card.querySelector('.service-title').textContent;
+                    const description = card.querySelector('.service-desc').textContent;
+                    const icon = card.querySelector('.service-icon i').cloneNode(true);
+                    
+                    modalTitle.textContent = title;
+                    modalDescription.textContent = description;
+                    
+                    // Clear modal icon and add new one
+                    modalIcon.innerHTML = '';
+                    modalIcon.appendChild(icon);
+                    
+                    modal.style.display = 'flex';
+                });
+            });
+            
+            // Close modal
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Services link scroll
+            const servicesLink = document.getElementById('services-link');
+            const servicesSection = document.getElementById('services');
+            
+            servicesLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                servicesSection.scrollIntoView({ behavior: 'smooth' });
+                
+                // Highlight services section
+                servicesSection.style.animation = 'none';
+                setTimeout(() => {
+                    servicesSection.style.animation = 'highlight 2s ease';
+                }, 10);
+                
+                // Add CSS animation
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    @keyframes highlight {
+                        0% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); }
+                        50% { box-shadow: 0 0 0 20px rgba(138, 43, 226, 0.2); }
+                        100% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                // Remove style after animation
+                setTimeout(() => {
+                    document.head.removeChild(style);
+                }, 2000);
+            });
+        });
+    </script>
+    
+</body>
+</html>

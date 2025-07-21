@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Eraf's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/Eraf's Portfolio/css/style.css">
+    <style>
+        /* Services Page Specific Styles */
+        .services-section {
+            background: rgba(10, 8, 31, 0.8);
+        }
+        
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .filter-btn {
+            padding: 0.8rem 1.8rem;
+            background: transparent;
+            color: var(--gray);
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: rgba(20, 20, 60, 0.6);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.3);
+            border-color: var(--primary);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(93, 155, 255, 0.1));
+            transition: height 0.4s ease;
+            z-index: -1;
+        }
+        
+        .service-card:hover::before {
+            height: 100%;
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .service-desc {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            min-height: 80px;
+        }
+        
+        .service-btn {
+            padding: 0.6rem 1.5rem;
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .service-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Pricing Section */
+        .pricing-section {
+            padding: 5rem 10%;
+        }
+        
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .pricing-card {
+            background: rgba(20, 20, 60, 0.6);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.popular::before {
+            content: 'Popular';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 3rem;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.3);
+        }
+        
+        .pricing-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .pricing-price {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .pricing-price span {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-features li {
+            padding: 0.8rem 0;
+            color: var(--gray);
+            border-bottom: 1px solid rgba(138, 43, 226, 0.1);
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features li i {
+            color: var(--primary);
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="left">Eraf's Portfolio</div>
+            <div class="right">
+                <ul id="menu">
+                    <li><a href="/Eraf's Portfolio/html/home.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="/Eraf's Portfolio/html/about.html"><i class="fas fa-user"></i> About</a></li>
+                    <li><a href="/Eraf's Portfolio/html/services.html" class="active"><i class="fas fa-cog"></i> Services</a></li>
+                    <li><a href="/Eraf's Portfolio/html/projects.html"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                    <li><a href="/Eraf's Portfolio/html/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="services-section">
+            <div class="services-container">
+                <div class="section-title">
+                    <div class="section-subtitle">What I Offer</div>
+                    <h2 class="section-main-title">My Services</h2>
+                </div>
+                
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All Services</button>
+                    <button class="filter-btn" data-filter="frontend">Frontend</button>
+                    <button class="filter-btn" data-filter="backend">Backend</button>
+                    <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card" data-service="frontend">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="service-title">Web Development</h3>
+                        <p class="service-desc">Crafting modern, responsive websites with clean code and creative design. Passionate about performance, user experience, and turning ideas into digital reality. Lets build something amazing!</p>
+                        <button class="service-btn">Learn More</button>
+                    </div>
+                    
+                    <div class="service-card" data-service="frontend">
+                        <div class="service-icon">
+                            <i class="fab fa-react"></i>
+                        </div>
+                        <h3 class="service-title">Frontend Development</h3>
+                        <p class="service-desc">Frontend Developer crafting pixel-perfect, responsive UIs with React, JavaScript & CSS. Passionate about performance, accessibility, and creating seamless user experiences.</p>
+                        <button class="service-btn">Learn More</button>
+                    </div>
+                    
+                    <div class="service-card" data-service="backend">
+                        <div class="service-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3 class="service-title">Backend Development</h3>
+                        <p class="service-desc">Backend Developer building robust APIs, scalable systems & efficient databases. Passionate about clean architecture, security, and high-performance server-side solutions.</p>
+                        <button class="service-btn">Learn More</button>
+                    </div>
+                    
+                    <div class="service-card" data-service="backend">
+                        <div class="service-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="service-title">UI/UX Design</h3>
+                        <p class="service-desc">UI/UX Designer crafting intuitive, visually stunning experiences—where user needs meet beautiful interfaces. Passionate about empathy, simplicity, and pixel-perfect details.</p>
+                        <button class="service-btn">Learn More</button>
+                    </div>
+                    
+                    <div class="service-card" data-service="fullstack">
+                        <div class="service-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3 class="service-title">Mobile Apps</h3>
+                        <p class="service-desc">Mobile Apps crafting smooth, intuitive experiences for iOS & Android. Passionate about performance, sleek design, and code that just works.</p>
+                        <button class="service-btn">Learn More</button>
+                    </div>
+                    
+                    <div class="service-card" data-service="fullstack">
+                        <div class="service-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="service-title">AI Solutions</h3>
+                        <p class="service-desc">AI solutions that drive decisions—automating workflows, optimizing processes, and uncovering hidden patterns. Data science with measurable results.</p>
+                        <button class="service-btn">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!--
+        <section class="pricing-section">
+            <div class="section-title">
+                <div class="section-subtitle">Flexible Pricing</div>
+                <h2 class="section-main-title">My Pricing Plans</h2>
+            </div>
+            
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3 class="pricing-title">Basic</h3>
+                    <div class="pricing-price">$99<span>/project</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Single Page Website</li>
+                        <li><i class="fas fa-check"></i> Responsive Design</li>
+                        <li><i class="fas fa-check"></i> Basic SEO</li>
+                        <li><i class="fas fa-check"></i> 1 Revision</li>
+                        <li><i class="fas fa-check"></i> 1 Week Delivery</li>
+                    </ul>
+                    <button class="btn">Get Started</button>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <h3 class="pricing-title">Standard</h3>
+                    <div class="pricing-price">$299<span>/project</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Multi-Page Website</li>
+                        <li><i class="fas fa-check"></i> Responsive Design</li>
+                        <li><i class="fas fa-check"></i> Advanced SEO</li>
+                        <li><i class="fas fa-check"></i> 3 Revisions</li>
+                        <li><i class="fas fa-check"></i> 2 Weeks Delivery</li>
+                    </ul>
+                    <button class="btn">Get Started</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3 class="pricing-title">Premium</h3>
+                    <div class="pricing-price">$599<span>/project</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Custom Web Application</li>
+                        <li><i class="fas fa-check"></i> Full Stack Development</li>
+                        <li><i class="fas fa-check"></i> Advanced SEO</li>
+                        <li><i class="fas fa-check"></i> Unlimited Revisions</li>
+                        <li><i class="fas fa-check"></i> 1 Month Delivery</li>
+                    </ul>
+                    <button class="btn">Get Started</button>
+                </div>
+            </div>
+        </section>
+    -->
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>Copyright &copy; 2025 Eraf's Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            menuToggle.innerHTML = menu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Service card click to open modal
+            const serviceCardsAll = document.querySelectorAll('.service-card');
+            const modal = document.getElementById('service-modal');
+            const closeModal = document.getElementById('close-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const modalIcon = document.getElementById('modal-icon');
+            
+            serviceCardsAll.forEach(card => {
+                card.addEventListener('click', () => {
+                    const title = card.querySelector('.service-title').textContent;
+                    const description = card.querySelector('.service-desc').textContent;
+                    const icon = card.querySelector('.service-icon i').cloneNode(true);
+                    
+                    modalTitle.textContent = title;
+                    modalDescription.textContent = description;
+                    
+                    // Clear modal icon and add new one
+                    modalIcon.innerHTML = '';
+                    modalIcon.appendChild(icon);
+                    
+                    modal.style.display = 'flex';
+                });
+            });
+            
+            // Close modal
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Services link scroll
+            const servicesLink = document.getElementById('services-link');
+            const servicesSection = document.getElementById('services');
+            
+            servicesLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                servicesSection.scrollIntoView({ behavior: 'smooth' });
+                
+                // Highlight services section
+                servicesSection.style.animation = 'none';
+                setTimeout(() => {
+                    servicesSection.style.animation = 'highlight 2s ease';
+                }, 10);
+                
+                // Add CSS animation
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    @keyframes highlight {
+                        0% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); }
+                        50% { box-shadow: 0 0 0 20px rgba(138, 43, 226, 0.2); }
+                        100% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                // Remove style after animation
+                setTimeout(() => {
+                    document.head.removeChild(style);
+                }, 2000);
+            });
+
+        // Filter services
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const serviceCards = document.querySelectorAll('.service-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                serviceCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-service') === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
