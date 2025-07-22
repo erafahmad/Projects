@@ -12,10 +12,11 @@ Features
 
 Tech Stack -
 
-    Frontend: React.js
-    Styling: Tailwind CSS
-    State Management: React Hooks 
-    Routing: React Router
+* React
+* Tailwind CSS
+* React Hooks 
+* React Router
+* JavaScript
 
 Screenshots
 (Add a few screenshots if possible, or describe the UI.)
@@ -46,12 +47,11 @@ Want to run this locally? Follow these steps:
         Open http://localhost: in your browser.
 
 
-🔗 Connect With Me
-Let’s chat! I’m open to collaborations, feedback, or just a tech discussion.
+🔗 Connect With Me Let’s chat! I’m open to collaborations, feedback, or just a tech discussion.
 
 LinkedIn: www.linkedin.com/in/md-eraf-ahmad-57100b326
 
-GitHub: @erafahmad
+GitHub: https://github.com/erafahmad
 
 Email: erafahmad31@gmail.com
 >>>>>>> ace7a9e (New)
