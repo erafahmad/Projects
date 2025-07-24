@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falak Restro | Authentic Cuisine</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Falak Restro</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="btn btn-cart" id="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </button>
+                    <button class="btn btn-primary" id="book-table-btn">Book a Table</button>
+                </div>
+            </nav>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <ul>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-nav-actions">
+            <button class="btn btn-cart">
+                <i class="fas fa-shopping-cart"></i> Cart (<span class="cart-count">0</span>)
+            </button>
+            <button class="btn btn-primary">Book a Table</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Authentic Flavors of Tradition</h2>
+            <p>Experience the rich culinary heritage at Falak Restro</p>
+            <div class="hero-btns">
+                <a href="#menu" class="btn btn-primary">Explore Menu</a>
+                <a href="#book-table" class="btn btn-secondary">Reserve a Table</a>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2 class="section-title">Our Menu</h2>
+            <div class="menu-filters">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="starters">Starters</button>
+                <button class="filter-btn" data-category="mains">Main Courses</button>
+                <button class="filter-btn" data-category="desserts">Desserts</button>
+                <button class="filter-btn" data-category="drinks">Drinks</button>
+            </div>
+            <div class="menu-grid" id="menu-grid">
+                <!-- Menu items will be loaded dynamically from JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be loaded dynamically -->
+            <div class="empty-cart-message">
+                <p>Your cart is empty</p>
+                <a href="#menu" class="btn btn-primary">Browse Menu</a>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="total-amount">Rs 0/-</span>
+            </div>
+            <button class="btn btn-primary btn-checkout">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Food Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/images/gallery1.jpg" alt="Food Image 1" loading="lazy">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus zoom-icon"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/gallery2.jpg" alt="Food Image 2" loading="lazy">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus zoom-icon"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/gallery3.jpg" alt="Food Image 3" loading="lazy">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus zoom-icon"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/gallery4.jpg" alt="Food Image 4" loading="lazy">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus zoom-icon"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/gallery5.jpg" alt="Food Image 5" loading="lazy">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus zoom-icon"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/gallery6.jpg" alt="Food Image 6" loading="lazy">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus zoom-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div class="image-modal" id="image-modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modal-image">
+        <div class="modal-caption"></div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">Our Story</h2>
+                <p>Falak Restro was founded in 2004 with a simple mission: to bring authentic, traditional flavors to
+                    our community. What started as a small roadside eatery has grown into a beloved culinary
+                    destination, thanks to our commitment to quality ingredients and time-honored recipes.</p>
+                <p>Our chefs combine generations of culinary wisdom with fresh, locally-sourced ingredients to create
+                    dishes that tell a story of tradition and passion.</p>
+                <div class="about-features">
+                    <div class="feature">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Authentic Recipes</h3>
+                        <p>Traditional recipes passed down through generations</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Fresh Ingredients</h3>
+                        <p>Locally sourced, seasonal ingredients</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-heart"></i>
+                        <h3>Made with Love</h3>
+                        <p>Every dish prepared with care and passion</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="assets/images/chef.jpg" alt="Our Chef" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Table Booking Section -->
+    <section id="book-table" class="booking-section">
+        <div class="container">
+            <h2 class="section-title">Book a Table</h2>
+            <div class="booking-container">
+                <div class="booking-info">
+                    <h3>Reservation Details</h3>
+                    <p>Make a reservation to guarantee your table at Falak Restro. We recommend booking in advance,
+                        especially for weekends and holidays.</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                        <p><i class="fas fa-envelope"></i> reservations@falakrestro.com</p>
+                        <p><i class="fas fa-clock"></i> Open daily: 11:00 AM - 11:00 PM</p>
+                    </div>
+                </div>
+                <form class="booking-form" id="booking-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Time</label>
+                            <input type="time" id="time" name="time" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="guests">Number of Guests</label>
+                            <select id="guests" name="guests" required>
+                                <option value="1">1 Person</option>
+                                <option value="2">2 People</option>
+                                <option value="3">3 People</option>
+                                <option value="4">4 People</option>
+                                <option value="5">5 People</option>
+                                <option value="6">6 People</option>
+                                <option value="7">7 People</option>
+                                <option value="8">8+ People</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="occasion">Occasion (Optional)</label>
+                            <select id="occasion" name="occasion">
+                                <option value="">None</option>
+                                <option value="birthday">Birthday</option>
+                                <option value="anniversary">Anniversary</option>
+                                <option value="business">Business Dinner</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="special-requests">Special Requests</label>
+                        <textarea id="special-requests" name="special-requests" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Book Table</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>Have questions or feedback? We'd love to hear from you!</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Food Street, Delhi, India 110001</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <p>+91 98765 43210</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <p>info@falakrestro.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <p>Open Daily: 11:00 AM - 11:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.389239579036!2d77.2279063150824!3d28.62873998242386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sNew%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Falak Restro</h3>
+                    <p>Bringing authentic flavors to your table since 2004. Experience the taste of tradition with our
+                        carefully crafted dishes.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Opening Hours</h3>
+                    <ul>
+                        <li>Monday - Friday: 11:00 AM - 11:00 PM</li>
+                        <li>Saturday - Sunday: 10:00 AM - 11:30 PM</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for special offers and updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Falak Restro. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Animation -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loader">
+            <div class="loader-inner">
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
